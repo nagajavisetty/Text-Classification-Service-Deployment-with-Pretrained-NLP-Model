@@ -4,7 +4,10 @@ from flask import Flask, request, render_template
 app = Flask(__name__)
 
 # Load the model only once when the application starts
-classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
+classifier = pipeline(
+    "zero-shot-classification",
+    model="facebook/bart-large-mnli"
+)
 
 
 @app.route('/')
@@ -25,7 +28,8 @@ def predict():
         prediction = classifier(sentence, labels)
         output = prediction['labels'][0]
 
-        return render_template('index.html', prediction_text='Prediction: {}'.format(output))
+        return render_template(
+            'index.html', prediction_text='Prediction: {}'.format(output))
 
     except Exception as e:
         return render_template('index.html', prediction_text='Error: {}'.format(str(e)))
