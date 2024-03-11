@@ -1,4 +1,3 @@
-```markdown
 # Text Classification Service
 
 This project is a text classification service based on a pretrained NLP model. It allows users to input a sentence and a list of labels, and it returns the predicted label for the input sentence.
